@@ -1,0 +1,25 @@
+.default-bck
+{
+    background-color: cadetblue;
+}
+
+.myButton
+{
+    font-size: 32px;
+    border-radius: 10px;
+    font-family: fantasy;
+    color: blue;
+}
+
+.container
+{
+    background-color: beige;
+    font-size: 32px;
+    padding: 22px;
+    margin-top: 20px;
+    border-radius: 18px;
+    font-family: fantasy;
+    color: blue;
+    display: flex;
+    justify-content: center;
+}
