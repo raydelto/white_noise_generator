@@ -5,7 +5,10 @@ var initialized = false;
 function initAudio() {
     this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
     // Create an empty 5 seconds stereo buffer
-    const myArrayBuffer = this.audioContext.createBuffer(2, this.audioContext.sampleRate * 5, this.audioContext.sampleRate);
+    const numberOfChannels = 2;
+    const length = this.audioContext.sampleRate * 5;
+    const sampleRate = this.audioContext.sampleRate;
+    const myArrayBuffer = this.audioContext.createBuffer(numberOfChannels, length, sampleRate);
 
     // Fill the buffer with white noise;
     // just random values between -1.0 and 1.0
