@@ -1,6 +1,4 @@
-var isOn = false;
-var initialized = false;
-
+let isOn = false;
 
 function initAudio() {
     this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -39,12 +37,8 @@ function play(){
     var switchButton = document.getElementById("switchButton");
     switchButton.innerHTML = isOn ? "Turn Off" : "Turn On";
 
-    if(isOn)
-    {
-        if(!initialized){
-            intialized = true;
-            initAudio();
-        }
+    if (isOn) {
+        initAudio();
 
 	    // connect the AudioBufferSourceNode to the
         // destination so we can hear the sound
