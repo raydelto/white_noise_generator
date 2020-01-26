@@ -49,7 +49,6 @@ function play(){
         this.noiseSource.loop = true;
 	    this.noiseSource.start();        
     }else{
-        // initialized = false;
         this.noiseSource.stop();
     }
 }
