@@ -8,14 +8,13 @@ function initAudio() {
     const sampleRate = this.audioContext.sampleRate;
     const myArrayBuffer = this.audioContext.createBuffer(numberOfChannels, length, sampleRate);
 
-    // Fill the buffer with white noise;
-    // just random values between -1.0 and 1.0
-    for (var channel = 0; channel < myArrayBuffer.numberOfChannels; channel++) {
+    // Fill the buffer with white noise just random values between -1.0 and 1.0
+    for (let channel = 0; channel < myArrayBuffer.numberOfChannels; channel++) {
       // This gives us the actual array that contains the data
       const nowBuffering = myArrayBuffer.getChannelData(channel);
-      for (var i = 0; i < myArrayBuffer.length; i++) {
+      for (let i = 0; i < myArrayBuffer.length; i++) {
         // Math.random() is in [0; 1.0]
-        // audio needs to be in [-1.0; 1.0]
+        // Audio needs to be in [-1.0; 1.0]
         nowBuffering[i] = Math.random() * 2 - 1;
       }
     }
@@ -26,7 +25,7 @@ function initAudio() {
 
     this.gainNode = this.audioContext.createGain();
 
-    // set the buffer in the AudioBufferSourceNode
+    // Set the buffer in the AudioBufferSourceNode
     this.noiseSource.buffer = myArrayBuffer;
     this.noiseSource.connect(this.gainNode);
     this.gainNode.connect(this.audioContext.destination);
@@ -34,18 +33,17 @@ function initAudio() {
 
 function play(){
     isOn = !isOn;
-    var switchButton = document.getElementById("switchButton");
+    const switchButton = document.getElementById("switch-button");
     switchButton.innerHTML = isOn ? "Turn Off" : "Turn On";
 
     if (isOn) {
         initAudio();
 
-	    // connect the AudioBufferSourceNode to the
-        // destination so we can hear the sound
+        // Connect the AudioBufferSourceNode to the destination so we can hear the sound
         this.noiseSource.connect(this.audioContext.destination);
         this.noiseSource.loop = true;
-	    this.noiseSource.start();        
-    }else{
+	    this.noiseSource.start();
+    } else {
         this.noiseSource.stop();
     }
 }
